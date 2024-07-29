@@ -1,3 +1,65 @@
-.grid-container {
+{box-sizing: border-box;}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* all buttons on calculator, and output area */
+.calculator {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* where the sum is calculated and printed */
+.calculator-output {
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: pink;
+    color: blue;
+    text-align: right;
+    border-radius: 5px;
+
+}
+
+/* all keys (operator, numbers, enter, AC, . */
+.calculator-keys {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* +, X, -, ÷, */
+.calculator-key-operator {
+
+}
+
+/* 1-9, 0 */
+.calculator-key-number {
+
+}
+
+/* ".", "AC" */
+.calculator-key {
+
+}
+
+/* "=" */
+.calculator-key-enter {
+
+}
+
+.calculator-key-number-0 {
+    grid-column: span 2;
 }

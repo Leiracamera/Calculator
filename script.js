@@ -31,6 +31,10 @@ const add = function(a, b) {
     return result;
       
   };
+
+  function operate() {
+    
+  }
   
   // Do not edit below this line
   module.exports = {

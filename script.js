@@ -1,16 +1,16 @@
-// initialize variables 
+//const calculator = document.querySelectorAll('.calculator-keys');
+const output = document.querySelector('.calculator-output');
+const numberKeys = document.querySelectorAll('.calculator-key-number');
+const allClearKey = document.querySelector('.calculator-key-ac'); 
+const operatorKeys = document.querySelectorAll('.calculator-key-operator');
+const equalKey = document.querySelector('.calculator-key-equal');
+const decimalKey = document.querySelector('.calculator-key-decimal');
 
 displayValue = "0";
 firstOperand = null;
 secondOperand = null;
 currentOperator = null;
 result = null;
-
-
-const output = document.querySelector('.calculator-output');
-const numberKeys = document.querySelectorAll('.calculator-key-number');
-const allClearKey = document.querySelector('.calculator-key-clear'); 
-
 
 function updateOutput(e) {
   const key = e.target.textContent;

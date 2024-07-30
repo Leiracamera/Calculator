@@ -51,7 +51,8 @@ body {
 }
 
 /* ".", "AC" */
-.calculator-key {
+.calculator-key-ac {
+    grid-column: span 3;
 
 }
 

@@ -52,15 +52,14 @@ body {
 
 /* ".", "AC" */
 .calculator-key-ac {
-    grid-column: span 3;
-
+    grid-column: span 4;
 }
 
 /* "=" */
-.calculator-key-enter {
-
+.operator-key-enter {
+    grid-column: span 2;
 }
 
-.calculator-key-number-0 {
-    grid-column: span 2;
+.calculator-key-zero {
+ grid-column: span 2;
 }

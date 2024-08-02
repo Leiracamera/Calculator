@@ -1,17 +1,10 @@
-//const calculator = document.querySelectorAll('.calculator-keys');
-const output = document.querySelector('.calculator-output');
-const numberKeys = document.querySelectorAll('.calculator-key-number');
-const allClearKey = document.querySelector('.calculator-key-ac'); 
-const operatorKeys = document.querySelectorAll('.calculator-key-operator');
-const equalKey = document.querySelector('.calculator-key-equal');
-const decimalKey = document.querySelector('.calculator-key-decimal');
+// Variables for clickable items
+let operandA = '';
+let operatorClick = '';
+let operandB = '';
+let output = document.querySelector('.calculator-output');
 
-displayValue = "0";
-firstOperand = null;
-secondOperand = null;
-currentOperator = null;
-result = null;
-
+// Function to update output based on button clicks
 function updateOutput(e) {
   const key = e.target.textContent;
 
@@ -22,38 +15,74 @@ function updateOutput(e) {
   }
 }
 
+// Function to clear output
 function clearOutput() {
-  output.textContent = '0'
+  output.textContent = '0';
+  operandA = '';
+  operatorClick = '';
+  operandB = '';
 }
 
+// Add event listeners to number keys 
+const numberKeys = document.querySelectorAll('.calculator-key-number');
 numberKeys.forEach(key => {
   key.addEventListener('click', updateOutput);
 });
 
+// Add event listener to clear key
+const allClearKey = document.querySelector('.calculator-key-ac');
 allClearKey.addEventListener('click', clearOutput);
 
+// Basic operations 
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => {
+  if (b === 0) {
+      return Error("Error: Division by Zero");
+  } return a / b;
+};
 
-function add(firstOperand, secondOperand) {
-  return firstOperand + secondOperand;
+// Function to handle operator clicks
+function handleOperatorClick(e) {
+  const operator = e.target.textContent;
+  if (operatorClick === '') {
+    operandA = output.textContent;
+    operatorClick = operator;
+    output.textContent = '0';
+  } else {
+    operandB = output.textContent;
+    output.textContent = calculate(operandA, operator, operandB);
+    operandA = output.textContent;
+    operatorClick = operator;
+    output.textContent = '0';
+  }
 }
 
-function subtract(firstOperand, secondOperand) {
-  return firstOperand - secondOperand;
+// Function to calculate result based on operator
+function calculate(a, operator, b) {
+  const numA = parseFloat(a);
+  const numB = parseFloat(b);
+
+  switch (operator) {
+    case '+':
+      return add(numA, numB);
+    case '-':
+      return subtract(numA, numB);
+    case '*':
+      return multiply(numA, numB);
+    case '/':
+      return divide(numA, numB);
+    default:
+      return 'Error';
+  }
 }
 
-function multiply(firstOperand, secondOperand) {
-  return firstOperand * secondOperand;
-}
-
-function divide(firstOperand, secondOperand) {
-  return firstOperand / secondOperand;
-}
-
-const display = document.querySelector('.calculator-output');
-
-
-
-
+// Add event listeners to operator keys
+const operatorKeys = document.querySelectorAll('.operator-key');
+operatorKeys.forEach(key => {
+  key.addEventListener('click', handleOperatorClick);
+}); 
 
 
 

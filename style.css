@@ -56,7 +56,7 @@ body {
 }
 
 /* "=" */
-.operator-key-enter {
+.operator-key-equal {
     grid-column: span 2;
 }
 

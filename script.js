@@ -13,6 +13,7 @@ function updateOutput(e) {
    } else {
     output.textContent += key;
   }
+  console.log(`Updated Output: ${output.textContent}`);
 }
 
 // Function to clear output
@@ -21,6 +22,7 @@ function clearOutput() {
   operandA = '';
   operatorClick = '';
   operandB = '';
+  console.log('Cleared Output');
 }
 
 // Add event listeners to number keys 
@@ -46,17 +48,16 @@ const divide = (a, b) => {
 // Function to handle operator clicks
 function handleOperatorClick(e) {
   const operator = e.target.textContent;
-  if (operatorClick === '') {
+  if (operandA !== '' && operandB === '') {
+    operatorClick = operator;
+  } else if (operandA !== '' && operandB !== '') {
+    output.textContent = calculate(operandA, operatorClick, operandB);
     operandA = output.textContent;
     operatorClick = operator;
-    output.textContent = '0';
-  } else {
-    operandB = output.textContent;
-    output.textContent = calculate(operandA, operator, operandB);
-    operandA = output.textContent;
-    operatorClick = operator;
-    output.textContent = '0';
+    operandB = '';
   }
+  console.log(`OperandA: ${operandA}, Operator: ${operatorClick}, OperandB: ${operandB}`);
+
 }
 
 // Function to calculate result based on operator
@@ -84,7 +85,21 @@ operatorKeys.forEach(key => {
   key.addEventListener('click', handleOperatorClick);
 }); 
 
+// Function to handle equal key
+function handleEqualClick() {
+  if (operandA !== '' && operatorClick !== '' && operandB !== '') {
+    output.textContent = calculate(operandA, operatorClick, operandB);
+    operandA = output.textContent;
+    operatorClick = '';
+    operandB = '';
+  }
+  console.log(`Equal Clicked - OperandA: ${operandA}, Operator: ${operatorClick}, OperandB: ${operandB}`);
 
+}
+
+// Add event listener to equal key
+const equalKey = document.querySelector('.operator-key-equal');
+equalKey.addEventListener('click', handleEqualClick);
 
 
 
